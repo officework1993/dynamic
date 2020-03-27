@@ -93,7 +93,7 @@ def run(num_epochs=45,
     if lr_step_period is None:
         lr_step_period = math.inf
     scheduler = torch.optim.lr_scheduler.StepLR(optim, lr_step_period)
-
+    import ipdb;ipdb.set_trace()
     # Compute mean and std
     mean, std = echonet.utils.get_mean_and_std(echonet.datasets.Echo(split="train"))
     kwargs = {"target_type": tasks,
@@ -204,7 +204,7 @@ def run(num_epochs=45,
                             g.write("{},{},{:.4f}\n".format(filename, i, p))
                 echonet.utils.latexify()
                 yhat = np.array(list(map(lambda x: x.mean(), yhat)))
-
+                
                 # Plot actual and predicted EF
                 fig = plt.figure(figsize=(3, 3))
                 lower = min(y.min(), yhat.min())
